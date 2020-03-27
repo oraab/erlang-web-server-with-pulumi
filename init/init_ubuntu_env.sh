@@ -22,10 +22,37 @@ else
 fi
 
 # verify nodejs is installed for pulumi base languages (typescript) and install if not 
-if [[ $(nodejs --version) == *"command not found"* ]];
+if [[ $(nodejs --version 2>&1) == *"command not found"* ]];
 then
     echo "node.js not installed on machine - installing."
-    # install nodejs
+    sudo apt update && sud apt install -y nodejs
 else 
-    echo "node.js installed on machine - moving on."
+    echo "node.js already installed on machine - moving on."
+fi
+
+# verify npm is installed for package management through pulumi and install if not
+if [[ $(npm --version 2>&1) == *"command not found"* ]];
+then
+    echo "npm not installed on machine - installing."
+    sudo apt update && sudo apt install -y npm
+else 
+    echo "npm already installed on machine - moving on."
+fi
+
+# verify awscli is installed for pulumi configuration and install if not 
+if [[ $(aws version 2>&1) == *"command not found"* ]];
+then
+    echo "awscli not installed on machine - installing."
+    sudo apt update && sudo apt install -y awscli
+else 
+    echo "awscli already installed on machine - moving on."
+fi
+
+# verify docker engine is installed and install if not 
+if [[ $(docker --version 2>&1) == *"command not found"* ]];
+then
+    echo "docker engine not installed on machine - installing."
+    sudo apt update && sudo apt install -y docker.io
+else 
+    echo "docker engine already installed on machine - moving on."
 fi
