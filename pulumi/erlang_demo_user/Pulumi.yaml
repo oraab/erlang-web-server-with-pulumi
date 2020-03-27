@@ -1,0 +1,3 @@
+name: erlang-demo-user
+runtime: nodejs
+description: User with relevant permissions for deploying erlang web server to AWS
