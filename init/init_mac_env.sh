@@ -7,7 +7,7 @@
 if [[ $(erl -eval 'io:write("test"), halt().' -noshell 2>&1) == *"command not found"* ]];
 then
     echo "erlang not installed on machine - installing now."
-    sudo apt update && sudo apt install -y erlang
+    brew update && brew install erlang
 else
     echo "erlang already installed on machine - moving on."
 fi
@@ -16,7 +16,7 @@ fi
 if [[ $(pulumi version 2>&1) == *"command not found"* ]];
 then
     echo "pulumi not installed on machine - installing now."
-    curl -fsSL https://get.pulumi.com | sh
+    brew update && brew install pulumi
 else 
     echo "pulumi already installed on machine - moving on."
 fi
@@ -25,7 +25,7 @@ fi
 if [[ $(node --version 2>&1) == *"command not found"* ]];
 then
     echo "node.js not installed on machine - installing."
-    sudo apt update && sud apt install -y nodejs
+    brew update && brew install nodejs
 else 
     echo "node.js already installed on machine - moving on."
 fi
@@ -34,7 +34,7 @@ fi
 if [[ $(npm --version 2>&1) == *"command not found"* ]];
 then
     echo "npm not installed on machine - installing."
-    sudo apt update && sudo apt install -y npm
+    brew update && brew install npm
 else 
     echo "npm already installed on machine - moving on."
 fi
@@ -43,7 +43,7 @@ fi
 if [[ $(aws version 2>&1) == *"command not found"* ]];
 then
     echo "awscli not installed on machine - installing."
-    sudo apt update && sudo apt install -y awscli
+    brew update && brew install awscli
 else 
     echo "awscli already installed on machine - moving on."
 fi
@@ -52,7 +52,9 @@ fi
 if [[ $(docker --version 2>&1) == *"command not found"* ]];
 then
     echo "docker engine not installed on machine - installing."
-    sudo apt update && sudo apt install -y docker.io
+    brew update && brew install docker.io
 else 
     echo "docker engine already installed on machine - moving on."
 fi
+
+echo "Init script completed."
