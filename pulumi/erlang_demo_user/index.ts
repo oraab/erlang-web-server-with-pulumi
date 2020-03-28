@@ -13,7 +13,10 @@ const policy = new aws.iam.Policy("erlango-demo-group-policy",{
 	      "ecr:Get*",
 	      "ecr:List*",
 	      "ecr:Describe*",
-	      "ecr:CreateRepository"
+	      "ecr:CreateRepository",
+	      "ecr:DeleteRepository",
+	      "ecr:DeleteLifecyclePolicy",
+	      "ecr:PutLifecyclePolicy"
 	      ],
 	      Effect: "Allow",
 	    Resource: "*"
@@ -24,7 +27,9 @@ const policy = new aws.iam.Policy("erlango-demo-group-policy",{
 	      "iam:List*",
 	      "iam:Describe*",
 	      "iam:AttachRolePolicy",
-	      "iam:CreateRole"
+	      "iam:DetachRolePolicy",
+	      "iam:CreateRole",
+	      "iam:DeleteRole"
 	    ],
             Effect: "Allow", 
 	    Resource: "*"
@@ -35,6 +40,7 @@ const policy = new aws.iam.Policy("erlango-demo-group-policy",{
 	      "logs:Get*",
 	      "logs:List*",
 	      "logs:CreateLogGroup",
+	      "logs:DeleteLogGroup",
 	      "logs:PutRetentionPolicy"
 	    ],
             Effect: "Allow", 
@@ -45,7 +51,8 @@ const policy = new aws.iam.Policy("erlango-demo-group-policy",{
                "ecs:Describe*",
                "ecs:Get*",
                "ecs:List*",
-               "ecs:CreateCluster"
+               "ecs:CreateCluster",
+               "ecs:DeleteCluster"
 	    ],
             Effect: "Allow",
             Resource: "*"
