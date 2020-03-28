@@ -5,7 +5,7 @@ import * as aws from "@pulumi/aws";
 const group = new aws.iam.Group("erlang-demo-group",{});
 
 // Create a policy with relevant permissions for the group and attach it 
-const policy = new aws.iam.Policy("erlango-demo-group-policy",{
+const policy = new aws.iam.Policy("erlang-demo-group-policy",{
     policy: JSON.stringify({
         Version: "2012-10-17",
 	Statement: [{
@@ -28,7 +28,20 @@ const policy = new aws.iam.Policy("erlango-demo-group-policy",{
         },
 	{
 	    Action: [
-	      "iam:*"
+	      "iam:Get*",
+	      "iam:List*",
+	      "iam:Describe*",
+	      "iam:AddRoleToInstanceProfile",
+	      "iam:AttachRolePolicy",
+	      "iam:DetachRolePolicy",
+	      "iam:PutRolePolicy",
+	      "iam:CreateServiceLinkedRole",
+	      "iam:UpdateRoleDescription",
+	      "iam:DeleteServiceLinkedRole",
+          "iam:GetServiceLinkedRoleDeletionStatus",
+	      "iam:CreateRole",
+	      "iam:DeleteRole",
+	      "iam:PassRole"
 	    ],
             Effect: "Allow", 
 	    Resource: "*"
