@@ -3,15 +3,6 @@
 # This script is used to verify required executables are installed, and install them if they are not. 
 # This version of the script takes care of installing the executables on a linux (Ubuntu) environment.
 
-# verify erlang is installed and install if not 
-if [[ $(erl -eval 'io:write("test"), halt().' -noshell 2>&1) == *"command not found"* ]];
-then
-    echo "erlang not installed on machine - installing now."
-    sudo apt update && sudo apt install -y erlang
-else
-    echo "erlang already installed on machine - moving on."
-fi
-
 # verify pulumi is installed and install if not
 if [[ $(pulumi version 2>&1) == *"command not found"* ]];
 then

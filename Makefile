@@ -4,17 +4,17 @@ init:
 	cd init/ && ./init.sh
 
 init-user:
-	cd pulumi/erlang_demo_server && npm install
-	pulumi up -y --cwd pulumi/erlang_demo_user/
+	cd pulumi/erlang_demo_user && npm install
+	pulumi stack select dev && pulumi up -y --cwd pulumi/erlang_demo_user/
 
 deploy:
 	cd pulumi/erlang_web_server && npm install 
-	pulumi up -y --cwd pulumi/erlang_web_server/
+	pulumi stack select dev && pulumi up -y --cwd pulumi/erlang_web_server/
 
 destroy:
 	# deliberately not run with auto approval
-	pulumi destroy --cwd pulumi/erlang_web_server/
+	pulumi stack select dev && pulumi destroy --cwd pulumi/erlang_web_server/
 
 destroy-user:
 	# deliberately not run with auto approval
-	pulumi destroy --cwd pulumi/erlang_demo_user/
+	pulumi stack select dev && pulumi destroy --cwd pulumi/erlang_demo_user/
