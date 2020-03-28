@@ -1,0 +1,13 @@
+{application, demo_web_server, [
+	{description, "Demo web server in Erlang that displays the request information in JSON"},
+	{vsn, "1.0.0"},
+	{modules, []},
+	{registered, [demo_web_server_sup]},
+	{applications, [
+		kernel,
+		stdlib,
+		cowboy
+	]},
+	{mod, {demo_web_server_app, []}},
+	{env, []}
+]}.
