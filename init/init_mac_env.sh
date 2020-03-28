@@ -16,7 +16,8 @@ fi
 if [[ $(pulumi version 2>&1) == *"command not found"* ]];
 then
     echo "pulumi not installed on machine - installing now."
-    brew update && brew install pulumi
+    # installing directly as homebrew only supports v1.0.0
+    curl -sSL https://get.pulumi.com | sh
 else 
     echo "pulumi already installed on machine - moving on."
 fi

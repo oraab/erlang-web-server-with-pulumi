@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "a193a9bf-3611-442c-94e1-5cea29567c5d",
+		"name": "erlang_web_server_examples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"testing_param1\":\"testing_value1\",\n  \"testing_param2\":\"testing_value2\",\n  \"testing_param3\":\"testing_value3\"\n}"
+				},
+				"url": {
+					"raw": "http://demo-web-server-9727a1d-2079000949.us-east-1.elb.amazonaws.com:8080/",
+					"protocol": "http",
+					"host": [
+						"demo-web-server-9727a1d-2079000949",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				},
+				"description": "POST request - the URL should be replaced with the generated URL for the LB once the pulumi stack is run."
+			},
+			"response": []
+		},
+		{
+			"name": "GET request with query params",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"test\":\"test\",\n  \"test2\":\"test2\"\n}"
+				},
+				"url": {
+					"raw": "http://demo-web-server-9727a1d-2079000949.us-east-1.elb.amazonaws.com:8080?name=someone&age=42",
+					"protocol": "http",
+					"host": [
+						"demo-web-server-9727a1d-2079000949",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"query": [
+						{
+							"key": "name",
+							"value": "someone"
+						},
+						{
+							"key": "age",
+							"value": "42"
+						}
+					]
+				},
+				"description": "GET request with query params - replace the URL with the generated URL for the LB when the pulumi stack is raised."
+			},
+			"response": []
+		},
+		{
+			"name": "GET request with no query params",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://demo-web-server-9727a1d-2079000949.us-east-1.elb.amazonaws.com:8080/",
+					"protocol": "http",
+					"host": [
+						"demo-web-server-9727a1d-2079000949",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				},
+				"description": "GET request with no query params - the URL should be replaced with the URL generated for the LB when the pulumi stack is raised. "
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -13,9 +13,14 @@ const policy = new aws.iam.Policy("erlango-demo-group-policy",{
 	      "ecr:Get*",
 	      "ecr:List*",
 	      "ecr:Describe*",
+	      "ecr:BatchCheckLayerAvailability",
+	      "ecr:CompleteLayerUpload",
 	      "ecr:CreateRepository",
+	      "ecr:UploadLayerPart",
 	      "ecr:DeleteRepository",
 	      "ecr:DeleteLifecyclePolicy",
+	      "ecr:InitiateLayerUpload",
+	      "ecr:PutImage",
 	      "ecr:PutLifecyclePolicy"
 	      ],
 	      Effect: "Allow",
@@ -23,19 +28,13 @@ const policy = new aws.iam.Policy("erlango-demo-group-policy",{
         },
 	{
 	    Action: [
-	      "iam:Get*",
-	      "iam:List*",
-	      "iam:Describe*",
-	      "iam:AttachRolePolicy",
-	      "iam:DetachRolePolicy",
-	      "iam:CreateRole",
-	      "iam:DeleteRole"
+	      "iam:*"
 	    ],
             Effect: "Allow", 
 	    Resource: "*"
 	},
 	{
-            Action: [
+        Action: [
 	      "logs:Describe*",
 	      "logs:Get*",
 	      "logs:List*",
@@ -46,17 +45,40 @@ const policy = new aws.iam.Policy("erlango-demo-group-policy",{
             Effect: "Allow", 
             Resource: "*"
         },
-        {
-            Action: [
-               "ecs:Describe*",
-               "ecs:Get*",
-               "ecs:List*",
-               "ecs:CreateCluster",
-               "ecs:DeleteCluster"
+    {
+        Action: [
+	      "kms:CreateGrant"
 	    ],
-            Effect: "Allow",
-            Resource: "*"
-	}]
+        Effect: "Allow", 
+        Resource: "*"
+    },
+    {
+        Action: [
+           "ecs:Describe*",
+           "ecs:Get*",
+           "ecs:List*",
+           "ecs:DiscoverPollEndpoint",
+           "ecs:CreateService",
+           "ecs:UpdateService",
+           "ecs:DeleteService",
+           "ecs:CreateCluster",
+           "ecs:DeleteCluster",
+           "ecs:Poll",
+           "ecs:PutAccountSetting",
+           "ecs:PutAttributes",
+           "ecs:RegisterContainerInstance",
+           "ecs:StartTask",
+           "ecs:RunTask",
+           "ecs:StopTask",
+           "ecs:SubmitContainerStateChange",
+           "ecs:SubmitTaskStateChange",
+           "ecs:RegisterContainerInstance",
+           "ecs:RegisterTaskDefinition",
+           "ecs:DeregisterTaskDefinition"
+    	],
+        Effect: "Allow",
+        Resource: "*"
+		}]
     })
 });
 
@@ -64,6 +86,7 @@ const policyAttachment = new aws.iam.PolicyAttachment("erlang-demo-group-policy-
     groups: [group],
     policyArn: policy.arn
 });
+
 const ec2PolicyAttachment = new aws.iam.PolicyAttachment("erlang-demo-group-ec2-policy-attachment",{
     groups: [group],
     policyArn: aws.iam.AmazonEC2FullAccess
